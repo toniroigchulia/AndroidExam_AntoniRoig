@@ -1,6 +1,8 @@
 package com.example.androidexam_antoniroig;
 
-public class Exercice {
+import java.io.Serializable;
+
+public class Exercice implements Serializable {
     private String name;
 
     public Exercice(String name){
