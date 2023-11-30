@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +19,8 @@ public class Adapter extends ArrayAdapter<Object> {
     }
 
     static class ViewHolder {
-        TextView exercice;
+        TextView exerciceText;
+        ImageView exerciceImage;
     }
 
     @NonNull
@@ -29,12 +31,14 @@ public class Adapter extends ArrayAdapter<Object> {
         if(item == null) {
             LayoutInflater inflater = context.getLayoutInflater();
             item = inflater.inflate(R.layout.exercice, null);
-            holder.exercice = item.findViewById(R.id.exercice);
+            holder.exerciceText = item.findViewById(R.id.exercice);
+            holder.exerciceImage = item.findViewById(R.id.image);
             item.setTag(holder);
         }else{
             holder = (ViewHolder) item.getTag();
         }
-        holder.exercice.setText(exercices[position].getName());
+        holder.exerciceText.setText(exercices[position].getName());
+        holder.exerciceImage.setImageResource(exercices[position].getImageResource());
 
         return (item);
     }

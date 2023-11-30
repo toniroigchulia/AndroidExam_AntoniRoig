@@ -1,9 +1,9 @@
 package com.example.androidexam_antoniroig;
-// DetailsFragment.java
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
@@ -15,10 +15,9 @@ public class ExerciceFragment extends Fragment {
     private Exercice selectedExercise;
 
     public ExerciceFragment() {
-        // Required empty public constructor
+
     }
 
-    // Método estático para crear una instancia de DetailsFragment con un ejercicio seleccionado
     public static ExerciceFragment newInstance(Exercice exercice) {
         ExerciceFragment fragment = new ExerciceFragment();
         Bundle args = new Bundle();
@@ -41,11 +40,12 @@ public class ExerciceFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_exercice, container, false);
 
         TextView exerciseDetailsTextView = rootView.findViewById(R.id.exerciseDetailsTextView);
+        ImageView exerciseDetailImage = rootView.findViewById(R.id.image);
 
         if (selectedExercise != null) {
-            // Obtener los detalles del ejercicio seleccionado y mostrarlos en el TextView
-            String exerciseDetails = "Nombre: " + selectedExercise.getName();
+            String exerciseDetails = "Nombre: " + selectedExercise.getName() +"\n"+ selectedExercise.getDescription();
             exerciseDetailsTextView.setText(exerciseDetails);
+            exerciseDetailImage.setImageResource(selectedExercise.getImageResource());
         }
 
         return rootView;
